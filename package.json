@@ -1,13 +1,10 @@
 {
-	"name": "42-comment",
-	"displayName": "42-comment",
-	"description": "42-style block comments",
+	"name": "42-comment-toggle",
+	"displayName": "42-comment toggle",
+	"description": "42-style block comments: comment and uncomment with one key (fork of nasanov/42-comment)",
 	"icon": "images/42-comment-logo.png",
-	"version": "0.0.2",
-	"publisher": "nasanov",
-	"repository": {
-		"url": "https://github.com/nasanov/42-comment"
-	},
+	"version": "0.1.0",
+	"publisher": "asakli",
 	"engines": {
 		"vscode": "^1.38.1"
 	},
@@ -15,35 +12,27 @@
 		"Formatters"
 	],
 	"activationEvents": [
-		"onCommand:extension.42-comment"
+		"onCommand:extension.42-comment-toggle"
 	],
 	"main": "src/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.42-comment",
-				"title": "42-comment"
+				"command": "extension.42-comment-toggle",
+				"title": "42-comment toggle"
 			}
 		],
 		"keybindings": [
 			{
-				"command": "extension.42-comment",
+				"command": "extension.42-comment-toggle",
 				"key": "ctrl+alt+*",
 				"mac": "shift+cmd+*",
-				"when": "editorTextFocus"
+				"when": "editorTextFocus && !editorReadonly"
 			}
 		]
 	},
 	"scripts": {
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^12.0.2",
-		"eslint": "^5.16.0",
-		"mocha": "^6.1.4",
-		"typescript": "^3.4.5",
-		"vscode": "^1.1.33"
+		"test": "node test/42-comment.test.js"
 	},
 	"dependencies": {}
 }

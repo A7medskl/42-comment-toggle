@@ -1,52 +1,51 @@
-# 42-style block comments
+# 42-comment toggle
+
+42-style block comments that toggle: one key comments, the same key uncomments.
+
+Fork of [42-comment](https://marketplace.visualstudio.com/items?itemName=nasanov.42-comment) by **nasanov**, which only comments.
 
 ## Features
 
 ``` c
-int     main()
+int	main(void)
 {
-    return 0;
+	return (0);
 }
 ```
 turns into:
 
 ``` c
 /*
-** int     main()
+** int	main(void)
 ** {
-**     return 0;
+** 	return (0);
 ** }
 */
 ```
 
+and pressing the shortcut again turns it back.
+
+- **Comment:** select the lines and run the command. The whole lines are taken, like the original.
+- **Uncomment:** select the block, or just put the cursor anywhere inside it, and run the command.
+- Empty lines become `**` with no trailing space, so norminette doesn't complain.
+- Blocks made by the original 42-comment (`** ` on empty lines) also uncomment.
+- Works with several cursors, and keeps the file's line endings (LF or CRLF).
+
 ## Usage
-Select the text that you want to transform, then call the command bar with:
 
-`Ctrl+Shift+P` or `shift+cmd+*` on MAC, `ctrl+alt+*` on Windows/Linux,
+`ctrl+alt+*` on Windows/Linux, `shift+cmd+*` on Mac,
 
-And run the command:
+or `Ctrl+Shift+P` and run `> 42-comment toggle`.
 
-`> 42-comment`
+Disable the original 42-comment if it is installed: both use the same shortcut.
 
 ## Keybindings
-You can bind these commands to another shortcut by adding something like this to your `keybindings.json`:
+
+Change the shortcut in Preferences -> Keyboard Shortcuts (search for 42-comment toggle), or in `keybindings.json`:
 ```
-{ "key": "shift+cmd+*", "command": "extension.42-comment", "when": "editorTextFocus"}
+{ "key": "shift+cmd+*", "command": "extension.42-comment-toggle", "when": "editorTextFocus" }
 ```
-or go to Preferences -> Keyboard Shortcuts, find 42-comment, change a shortcut
 
-## Known Issues
+## Tests
 
-Some known issues should be here.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 0.0.1
-
-Initial release of 42-comment
-
-### 0.0.2
-
-Keybindings were added
+`npm test`
